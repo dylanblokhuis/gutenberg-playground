@@ -3,9 +3,10 @@ import {
   BlockEditorKeyboardShortcuts,
   BlockEditorProvider,
   BlockList,
-  BlockTools,
   BlockInspector,
   WritingFlow,
+  // @ts-ignore
+  BlockTools,
   ObserveTyping,
 } from '@wordpress/block-editor';
 import { Popover, SlotFillProvider } from '@wordpress/components';
@@ -16,7 +17,7 @@ registerCoreBlocks();
 
 function App() {
   const storedBlocksJson = localStorage.getItem('blocks');
-  const [blocks, updateBlocks] = useState(storedBlocksJson ? JSON.parse(storedBlocksJson) : []);
+  const [blocks, updateBlocks] = useState<any[]>(storedBlocksJson ? JSON.parse(storedBlocksJson) : []);
 
   useEffect(() => {
     localStorage.setItem('blocks', JSON.stringify(blocks))
@@ -36,7 +37,7 @@ function App() {
           <div className="playground__content">
             <BlockTools>
               <div className="editor-styles-wrapper">
-                <BlockEditorKeyboardShortcuts.Register />
+                <BlockEditorKeyboardShortcuts />
                 <WritingFlow>
                   <ObserveTyping>
                     <BlockList />

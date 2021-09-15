@@ -3,7 +3,7 @@ import App from './App'
 
 import "./scss/style.scss"
 
-window.__editorAssets = {
+(window as any).__editorAssets = {
   "styles": "",
   "scripts": ""
 }
